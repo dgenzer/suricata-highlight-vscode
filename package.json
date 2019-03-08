@@ -1,0 +1,45 @@
+{
+    "name": "suricata-highlight-vscode",
+    "displayName": "Suricata Highlight",
+    "description": "Syntax highlighting for suricata rules",
+    "homepage": "https://github.com/dgenzer/suricata-highlight-vscode",
+    "license": "MIT",
+    "publisher": "dgenzer",
+    "version": "1.0.0",
+    "engines" : {
+        "vscode": ">1.0.0"
+    },
+    "keywords": [
+        "suricata",
+        "ids",
+        "pattern",
+        "security"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dgenzer/suricata-highlight"
+    },
+    "contributes": {
+        "languages": [
+            {
+                "id": "suricata",
+                "aliases": [
+                    "suricata",
+                    "suricata"
+                ],
+                "extensions": [
+                    ".rules",
+                    ".suricata"
+                ],
+                "configuration": "suricata.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "suricata",
+                "scopeName": "source.suricata",
+                "path": "grammars/suricata.tmLanguage"
+            }
+        ]
+    }
+}
