@@ -2,6 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <!-- Documentation includes all changes to https://github.com/OISF/suricata/commit/65039d4accf2133c64bd2ff3223f5be19dd9daa9 -->
 	<key>fileTypes</key>
 	<array>
 		<string>suricata</string>
@@ -13,58 +14,6 @@
 	<string>source.suricata</string>
 	<key>patterns</key>
     <array>
-        <dict>
-    		<key>name</key>
-			<string>comment.line</string>
-			<key>match</key>
-			<string>^#.*\n</string>
-		</dict>
-        <!-- Rule Header -->
-        <!-- Action -->
-        <!-- https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#action-order -->
-        <dict>
-            <key>name</key>
-            <string>keyword.other.action.suricata</string>
-            <key>match</key>
-            <string>^(pass|drop|reject|alert)\b</string>
-        </dict>
-        <!-- Protocol -->
-        <!-- https://suricata.readthedocs.io/en/latest/rules/intro.html#protocol -->
-        <dict>
-            <key>name</key>
-            <string>keyword.other.protocol.suricata</string>
-            <key>match</key>
-            <string>\b(tcp|udp|icmp|ip|http|ftp|tls|smb|dns|dcerpc|ssh|smtp|imap|msn|modbus|dnp3|enip|nfs|ikev2|krb5|ntp|dhcp)\b</string>
-        </dict>
-        <!-- IPv4 Addresses -->
-        <dict>
-            <key>name</key>
-            <string>variable.parameter.ipaddress.suricata</string>
-            <key>match</key>
-            <string>(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b</string>
-        </dict>
-        <!-- IPv4 CIDR Ranges -->
-        <dict>
-            <key>name</key>
-            <string>variable.parameter.ipsubnet.suricata</string>
-            <key>match</key>
-            <string>\/(3[0-2]|[1-2][0-9]|[0-9])\b</string>
-        </dict>
-        <!-- Port Numbers -->
-         <dict>
-            <key>name</key>
-            <string>support.constant.ports.suricata</string>
-            <key>match</key>
-            <string>(\b|:)([0-9]{1,3}|10[0-2][0-4])(:|\b)</string>
-        </dict>
-        <!-- Direction -->
-        <!-- https://suricata.readthedocs.io/en/latest/rules/intro.html#direction -->
-        <dict>
-            <key>name</key>
-            <string>keyword.other.direction.suricata</string>
-            <key>match</key>
-            <string>(-\&gt;|\&lt;\&gt;)</string>
-        </dict>
         <!-- Rule Options -->
         <!-- Meta Keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/meta.html -->
@@ -72,21 +21,21 @@
             <key>name</key>
             <string>storage.type.option.general.suricata</string>
             <key>match</key>
-            <string>\b(msg|sid|rev|gid|classtype|reference|priority|metadata|target)\b</string>
+            <string>\b(msg|sid|rev|gid|classtype|reference|priority|metadata|target|pcre)\b</string>
         </dict>
         <!-- IP Keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/header-keywords.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.nonpayloaddetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(ttl|ipopts|sameip|ip_proto|id|geoip|fragbits|fragoffset)</string>
+            <string>\b(ttl|ipopts|sameip|ip_proto|id|geoip|fragbits|fragoffset|tos)</string>
         </dict>
         <!-- TCP keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/header-keywords.html#tcp-keywords -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.nonpayloaddetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(seq|ack|window)</string>
         </dict>
@@ -94,7 +43,7 @@
         <!-- https://suricata.readthedocs.io/en/latest/rules/header-keywords.html#icmp-keywords -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.nonpayloaddetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(itype|icode|icmp_id|icmp_seq)</string>
         </dict>
@@ -102,23 +51,23 @@
         <!-- https://suricata.readthedocs.io/en/latest/rules/payload-keywords.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.payloaddetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(content|nocase|depth|startswith|offset|distance|within|isdataat|dsize|rpc|replace)</string>
+            <string>\b(content|nocase|depth|startswith|offset|distance|within|isdataat|dsize|rpc|replace|byte_test|byte_jump|byte_extract)</string>
         </dict>
         <!-- Transformations -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/transforms.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.nonpayloaddetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(fstrip_whitespace|compress_whitespace|to_sha256)</string>
+            <string>\b(fstrip_whitespace|compress_whitespace|to_sha256|to_md5|to_sha1)</string>
         </dict>
         <!-- Prefiltering keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/prefilter-keywords.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(fast_pattern|prefilter)</string>
         </dict>
@@ -126,7 +75,7 @@
         <!-- https://suricata.readthedocs.io/en/latest/rules/flow-keywords.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(flowbits|flow|flowint|stream_size)</string>
         </dict>
@@ -134,7 +83,7 @@
         <!-- https://suricata.readthedocs.io/en/latest/rules/bypass-keyword.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(bypass)</string>
         </dict>
@@ -143,23 +92,23 @@
         <!-- content-modifiers -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(http_uri|http_raw_uri|http_method|http_client_body|http_header|http_raw_header|http_cookie|http_user_agent|http_host|http_raw_host|http_stat_msg|http_stat_code|http_server_body)</string>
+            <string>\b(http_uri|http_raw_uri|http_method|http_client_body|http_header|http_raw_header|http_cookie|http_user_agent|http_host|http_raw_host|http_stat_msg|http_stat_code|http_server_body|http\.server|http\.location)</string>
         </dict>
         <!-- sticky-buffers -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(http_request_line|http_accept|http_accept_lang|http_accept_enc|http_referer|http_connection|http_content_type|http_content_len|http_start|http_protocol|http_header_names|http_response_line|file_data)</string>
+            <string>\b(http_request_line|http_accept|http_accept_lang|http_accept_enc|http_referer|http_connection|http_content_type|http_content_len|http_start|http_protocol|http_header_names|http_response_line|file_data|http\.protocol)</string>
         </dict>
         <!-- File keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/file-keywords.html -->
         <!-- content-modifiers -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(filename|fileext|filemagic|filestore|filemd5|filesha1|filesha256|filesize)</string>
         </dict>
@@ -167,7 +116,7 @@
         <!-- https://suricata.readthedocs.io/en/latest/rules/file-keywords.html -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(dns_query)</string>
         </dict>
@@ -176,24 +125,151 @@
         <!-- content-modifiers -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
             <string>\b(tls_cert_notbefore|tls_cert_notafter|tls_cert_expired|tls_cert_valid|tls\.version|ssl_version|tls\.subject|tls\.issuerdn|tls\.fingerprint|tls\.store|ssl_state)</string>
         </dict>
         <!-- sticky buffers -->
         <dict>
             <key>name</key>
-            <string>storage.type.option.postdetection.suricata</string>
+            <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(tls_cert_subject|tls_cert_issuer|tls_cert_serial|tls_cert_fingerprint|tls_sni)</string>
+            <string>\b(tls_cert_subject|tls_cert_issuer|tls_cert_serial|tls_cert_fingerprint|tls_sni|tls\.cert_subject|tls\.cert_issuer|tls\.cert_serial|tls\.cert_fingerprint|tls\.sni)</string>
+        </dict>
+        <!-- SSH Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/ssh-keywords.html -->
+        <!-- sticky buffers -->
+        <!-- no legacy keywords
+            ssh.protoversion
+            ssh.softwareversion
+        -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(ssh_proto|ssh_software|ssh\.proto|ssh\.sofware)</string>
+        </dict>
+        <!-- JA3 Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/ja3-keywords.html -->
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(ja3_hash|ja3_string|ja3\.hash|ja3\.string)</string>
+        </dict>
+        <!-- modbus Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/modbus-keyword.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(modbus)</string>
+        </dict>
+        <!-- DNP3 Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/dnp3-keywords.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(dnp3_func|dnp3_ind|dnp3_obj|dnp3_data)</string>
+        </dict>
+        <!-- ENIP/CIP Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/enip-keyword.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(enip_command|cip_service)</string>
+        </dict>
+        <!-- FTP/FTP-Data Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/ftp-keywords.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(ftpdata_command|ftpbounce)</string>
+        </dict>
+        <!-- Kerberos Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/kerberos-keywords.html -->
+        <!-- content-modifiers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(krb5_msg_type|krb5_err_code)</string>
+        </dict>
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(krb5_cname|krb5_sname)</string>
+        </dict>
+        <!-- TODO Events 
+        app-layer-event:krb5.weak_encryption
+        app-layer-event:krb5.malformed_data
+        -->
+        <!-- Generic App Layer Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/app-layer.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(app\-layer\-protocol|app\-layer\-event)</string>
+        </dict>
+        <!-- TODO Event Protocol Detection
+        applayer_mismatch_protocol_both_directions
+        applayer_wrong_direction_first_data
+        applayer_detect_protocol_only_one_direction
+        applayer_proto_detection_skipped
+        -->
+        <!-- Xbits Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/xbits.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(xbits)</string>
         </dict>
 
+       <!-- Threshold Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/thresholding.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(threshold|detection_filter)</string>
+        </dict>
+        <!-- TODO types
+        threshold
+        limit
+        both
+
+        syntax:: threshold: type <threshold|limit|both>, track <by_src|by_dst>, count <N>, seconds <T>
+        -->
+        <!-- IP Reputation Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/ip-reputation-rules.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(iprep)</string>
+        </dict>
+        <!-- Lua Keywords 
+        https://suricata.readthedocs.io/en/latest/rules/rule-lua-scripting.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(lua)</string>
+        </dict>
 
         <!-- Miscellaneous -->
         <!-- Special Term: Any -->
          <dict>
             <key>name</key>
-            <string>support.constant.any.suricata</string>
+            <string>variable.language.any.suricata</string>
             <key>match</key>
             <string>\bany\b</string>
         </dict>
@@ -225,7 +301,7 @@
             <key>match</key>
             <string>!</string>
         </dict>
-		<!-- Variables : Any word that starts with '$' 
+		<!-- Variables start with '$' 
         "It is a convention to use upper-case characters." 
         (source: https://suricata.readthedocs.io/en/suricata-4.1.2/configuration/suricata-yaml.html?highlight=variables#rule-vars) 
         -->
@@ -242,6 +318,69 @@
             <string>(\$)[A-Z0-9_]*[a-z]+[A-Z0-9_]*\b</string>
         </dict>
         <!-- /Variables -->
+
+        <!-- MAIN -->
+        <dict>
+    		<key>name</key>
+			<string>comment.line</string>
+			<key>match</key>
+			<string>^#.*\n</string>
+		</dict>
+        <!-- Rule Header -->
+        <!-- Action -->
+        <!-- https://suricata.readthedocs.io/en/latest/configuration/suricata-yaml.html#action-order -->
+        <dict>
+            <key>name</key>
+            <string>keyword.other.action.suricata</string>
+            <key>match</key>
+            <string>^(pass|drop|reject|alert)\b</string>
+        </dict>
+        <!-- Protocol -->
+        <!-- https://suricata.readthedocs.io/en/latest/rules/intro.html#protocol -->
+        <dict>
+            <key>name</key>
+            <string>keyword.other.protocol.suricata</string>
+            <key>match</key>
+            <string>\b(tcp|udp|icmp|ip|http|ftp\-data|ftp|tls|smb|dns|dcerpc|ssh|smtp|imap|msn|modbus|dnp3|enip|nfs|ikev2|krb5|ntp|dhcp)\b</string>
+        </dict>
+        <!-- IPv4 Addresses -->
+        <dict>
+            <key>name</key>
+            <string>variable.parameter.ipaddress.suricata</string>
+            <key>match</key>
+            <string>(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\b</string>
+        </dict>
+        <!-- IPv4 CIDR Ranges -->
+        <dict>
+            <key>name</key>
+            <string>variable.parameter.ipsubnet.suricata</string>
+            <key>match</key>
+            <string>\/(3[0-2]|[1-2][0-9]|[0-9])\b</string>
+        </dict>
+        <!-- Port Numbers -->
+         <dict>
+            <key>name</key>
+            <string>support.constant.ports.suricata</string>
+            <key>match</key>
+            <string>(\b|:)([0-9]{1,3}|10[0-2][0-4])(:|\b)</string>
+        </dict>
+        <!-- Direction -->
+        <!-- https://suricata.readthedocs.io/en/latest/rules/intro.html#direction -->
+        <dict>
+            <key>name</key>
+            <string>keyword.other.direction.suricata</string>
+            <key>match</key>
+            <string>(-\&gt;|\&lt;\&gt;)</string>
+        </dict>
+        <!-- There is no ‘reverse’ style direction, i.e. there is no <-. 
+        (source: https://suricata.readthedocs.io/en/latest/rules/intro.html?highlight=direction#direction)
+        -->
+        <dict>
+            <key>name</key>
+            <string>invalid.illegal.direction.suricata</string>
+            <key>match</key>
+            <string>(\&lt;-)</string>
+        </dict>
     </array>
 	<key>smartTypingPairs</key>
 	<array>
