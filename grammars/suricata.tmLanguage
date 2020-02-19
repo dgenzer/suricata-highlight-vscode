@@ -147,7 +147,7 @@
             <key>name</key>
             <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(ssh_proto|ssh_software|ssh\.proto|ssh\.sofware)</string>
+            <string>\b(ssh_proto|ssh_software|ssh\.proto|ssh\.software)</string>
         </dict>
         <!-- JA3 Keywords 
         https://suricata.readthedocs.io/en/latest/rules/ja3-keywords.html -->
