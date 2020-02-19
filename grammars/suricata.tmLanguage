@@ -210,6 +210,30 @@
         app-layer-event:krb5.weak_encryption
         app-layer-event:krb5.malformed_data
         -->
+        <!-- SNMP Keywords
+        https://suricata.readthedocs.io/en/latest/rules/snmp-keywords.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(snmp\.version|snmp\.pdu_type)</string>
+        </dict>
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(snmp\.community)</string>
+        </dict>
+        <!-- SIP Keywords
+        https://suricata.readthedocs.io/en/latest/rules/sip-keywords.html -->
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(sip\.method|sip\.uri|sip\.request_line|sip\.stat_code|sip\.stat_msg|sip\.response_line|sip\.protocol)</string>
+        </dict>
         <!-- Generic App Layer Keywords 
         https://suricata.readthedocs.io/en/latest/rules/app-layer.html -->
         <dict>
@@ -341,7 +365,7 @@
             <key>name</key>
             <string>keyword.other.protocol.suricata</string>
             <key>match</key>
-            <string>\b(tcp|udp|icmp|ip|http|ftp\-data|ftp|tls|smb|dns|dcerpc|ssh|smtp|imap|msn|modbus|dnp3|enip|nfs|ikev2|krb5|ntp|dhcp)\b</string>
+            <string>\b(tcp|udp|icmp|ip|http|ftp\-data|ftp|tls|smb|dns|dcerpc|ssh|smtp|imap|msn|modbus|dnp3|enip|nfs|ikev2|krb5|ntp|dhcp|sip|snmp)\b</string>
         </dict>
         <!-- IPv4 Addresses -->
         <dict>
