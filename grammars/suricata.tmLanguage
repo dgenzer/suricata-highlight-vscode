@@ -93,14 +93,14 @@
             <key>name</key>
             <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(http_uri|http_raw_uri|http_method|http_client_body|http_header|http_raw_header|http_cookie|http_user_agent|http_host|http_raw_host|http_stat_msg|http_stat_code|http_server_body|http\.server|http\.location)</string>
+            <string>\b(http[._]uri|http\.uri\.raw|http_raw_uri|http[._]method|http_client_body|http[._]header|http\.header\.raw|http_raw_header|http_cookie|http[._]user_agent|http[._]host|http\.host\.raw|http_raw_host|http\.server_body|http[._]stat_msg|http[._]stat_code|http_server_body|http\.server|http\.location)</string>
         </dict>
         <!-- sticky-buffers -->
         <dict>
             <key>name</key>
             <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(http_request_line|http_accept|http_accept_lang|http_accept_enc|http_referer|http_connection|http_content_type|http_content_len|http_start|http_protocol|http_header_names|http_response_line|file_data|http\.protocol)</string>
+            <string>\b(http[._]request_line|http\.request_body|http[._]accept|http[._]accept_lang|http[._]accept_enc|http[._]referer|http[._]connection|http[._]content_type|http[._]content_len|http[._]start|http[._]protocol|http[._]header_names|http[._]response_line|file[._]data|http\.protocol)</string>
         </dict>
         <!-- File keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/file-keywords.html -->
