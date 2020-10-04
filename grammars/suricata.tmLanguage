@@ -2,7 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <!-- Documentation includes all changes to https://github.com/OISF/suricata/commit/65039d4accf2133c64bd2ff3223f5be19dd9daa9 -->
 	<key>fileTypes</key>
 	<array>
 		<string>suricata</string>
