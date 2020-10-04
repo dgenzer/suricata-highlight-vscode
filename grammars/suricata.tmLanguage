@@ -233,6 +233,36 @@
             <key>match</key>
             <string>\b(sip\.method|sip\.uri|sip\.request_line|sip\.stat_code|sip\.stat_msg|sip\.response_line|sip\.protocol)</string>
         </dict>
+        <!-- RFB Keywords
+        https://suricata.readthedocs.io/en/latest/rules/rfb-keywords.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(rfb\.secresult|rfb\.sectype)</string>
+        </dict>
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(rfb\.name)</string>
+        </dict>
+        <!-- MQTT Keywords
+        https://suricata.readthedocs.io/en/latest/rules/mqtt-keywords.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(mqtt\.protocol_version|mqtt\.type|mqtt\.flags|mqtt\.connect\.flags|mqtt\.reason_code|mqtt\.qos|mqtt\.connack\.session_present)</string>
+        </dict>
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(mqtt\.connect\.clientid|mqtt\.connect\.password|mqtt\.connect\.username|mqtt\.connect\.willmessage|mqtt\.connect\.willtopic|mqtt\.publish\.message|mqtt\.publish\.topic|mqtt\.subscribe\.topic|mqtt\.unsubscribe\.topic)</string>
+        </dict>
         <!-- Generic App Layer Keywords 
         https://suricata.readthedocs.io/en/latest/rules/app-layer.html -->
         <dict>
