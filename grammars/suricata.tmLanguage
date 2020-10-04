@@ -263,6 +263,21 @@
             <key>match</key>
             <string>\b(mqtt\.connect\.clientid|mqtt\.connect\.password|mqtt\.connect\.username|mqtt\.connect\.willmessage|mqtt\.connect\.willtopic|mqtt\.publish\.message|mqtt\.publish\.topic|mqtt\.subscribe\.topic|mqtt\.unsubscribe\.topic)</string>
         </dict>
+         <!-- HTTP2 Keywords
+        https://suricata.readthedocs.io/en/latest/rules/http2-keywords.html -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(http2\.frametype|http2\.errorcode|http2\.priority|http2\.window|http2\.size_update|http2\.settings)</string>
+        </dict>
+        <!-- sticky buffers -->
+        <dict>
+            <key>name</key>
+            <string>storage.type.option.suricata</string>
+            <key>match</key>
+            <string>\b(http2\.header(_name)?)</string>
+        </dict>
         <!-- Generic App Layer Keywords 
         https://suricata.readthedocs.io/en/latest/rules/app-layer.html -->
         <dict>
