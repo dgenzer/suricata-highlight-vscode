@@ -357,10 +357,20 @@
         <dict>
             <key>name</key>
             <string>string.quoted.double.suricata</string>
-             <key>begin</key>
+            <key>begin</key>
             <string>(\"|\”)</string>
             <key>end</key>
             <string>(\"|\”)</string>
+
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>name</key>
+                    <string>constant.character.escape.suricata</string>
+                    <key>match</key>
+                    <string>(\\.)</string>
+                </dict>
+            </array>
         </dict>
         <!-- Operators -->
         <dict>
