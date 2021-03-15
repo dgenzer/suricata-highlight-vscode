@@ -60,7 +60,7 @@
             <key>name</key>
             <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(strip_whitespace|compress_whitespace|to_sha256|to_md5|to_sha1)</string>
+            <string>\b(dotprefix|strip_whitespace|compress_whitespace|to_sha256|to_md5|to_sha1|pcrexform|url_decode)</string>
         </dict>
         <!-- Prefiltering keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/prefilter-keywords.html -->
