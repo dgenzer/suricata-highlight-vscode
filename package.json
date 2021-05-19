@@ -5,7 +5,7 @@
     "homepage": "https://github.com/dgenzer/suricata-highlight-vscode",
     "license": "MIT",
     "publisher": "dgenzer",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "engines" : {
         "vscode": "^1.30.0"
     },
