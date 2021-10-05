@@ -368,7 +368,7 @@
                     <key>name</key>
                     <string>constant.character.escape.suricata</string>
                     <key>match</key>
-                    <string>(\\.)</string>
+                    <string>(\\[^x]|\\x[A-Za-z0-9]{2})</string>
                 </dict>
             </array>
         </dict>
