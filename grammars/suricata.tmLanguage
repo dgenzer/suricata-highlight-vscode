@@ -76,7 +76,7 @@
             <key>name</key>
             <string>storage.type.option.suricata</string>
             <key>match</key>
-            <string>\b(flowbits|flow|flowint|stream_size)</string>
+            <string>\b(flowbits|flowint|flow|stream_size)</string>
         </dict>
         <!-- Bypass keywords -->
         <!-- https://suricata.readthedocs.io/en/latest/rules/bypass-keyword.html -->
